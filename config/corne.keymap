@@ -19,7 +19,7 @@
                 compatible = "zmk,conditional-layers";
                 util_layer {
                         if-layers = <LOWER RAISE>;
-                        then-layers = <UTIL>;
+                        then-layer = <UTIL>;
                 };
         };
 
