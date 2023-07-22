@@ -18,10 +18,10 @@
         conditional_layers {
                 compatible = "zmk,keymap";
                 util_layer {
-                        if-layers = <LOWER RAISE>
-                        then-layers = <UTIL>
-                }
-        }
+                        if-layers = <LOWER RAISE>;
+                        then-layers = <UTIL>;
+                };
+        };
 
         keymap {
                 compatible = "zmk,keymap";
