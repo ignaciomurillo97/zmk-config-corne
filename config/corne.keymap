@@ -8,11 +8,12 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
-#define MAC     0
-#define WIN     1
-#define LOWER   2
-#define RAISE   3
-#define UTIL    4
+#define MAC         0
+#define WIN         1
+#define MAC_LOWER   2
+#define WIN_LOWER   3
+#define RAISE       4
+#define UTIL        5
 
 / {
         behaviors {
@@ -66,7 +67,7 @@
    &kp TAB       &kp Q &kp W &kp E &kp R &kp T              &kp Y &kp U  &kp I      &kp O   &kp P    &kp BSLH
    &mt LCTRL ESC &kp A &kp S &kp D &kp F &kp G              &kp H &kp J  &kp K      &kp L   &kp SEMI &kp SQT
    &kp LSHFT     &kp Z &kp X &kp C &kp V &kp B              &kp N &kp M  &kp COMMA  &kp DOT &kp FSLH &kp RSHIFT
-                  &kp LALT &lt LOWER TAB &gqt LCMD BSPC      &gqt LCMD SPACE &lt RAISE RET &kp RALT
+                  &kp LALT &lt MAC_LOWER TAB &gqt LCMD BSPC      &gqt LCMD SPACE &lt RAISE RET &kp RALT
                         >;
                 };
                 win_layer {
@@ -80,21 +81,35 @@
    &trans &trans &trans &trans &trans &trans            &trans &trans &trans &trans &trans &trans  
    &trans &trans &trans &trans &trans &trans            &trans &trans &trans &trans &trans &trans  
    &trans &trans &trans &trans &trans &trans            &trans &trans &trans &trans &trans &trans  
-              &kp LGUI &trans &gqt LCTRL BSPC                  &gqt RCTRL SPACE &trans &kp RALT
+              &kp LGUI &lt WIN_LOWER &gqt LCTRL BSPC                  &gqt RCTRL SPACE &trans &kp RALT
                         >;
                 };
 
-                lower_layer {
+                mac_lower_layer {
 // -----------------------------------------------------------------------------------------
 // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
 // | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
 // | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
 //                    | GUI |     | SPC |   | ENT |     | ALT |
                         bindings = <
-   &trans    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5         &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &trans
-   &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
-   &trans  &trans       &trans       &trans       &trans       &trans         &trans   &trans   &trans &trans    &trans &trans
-                                    &trans     &trans       &trans      &trans  &mo UTIL   &trans
+   &trans  &kp N1  &kp N2  &kp N3   &kp N4   &kp N5      &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &trans
+   &trans  &trans  &trans  &trans   &trans   &trans      &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
+   &trans  &trans  &trans  &trans   &trans   &trans      &trans   &trans   &trans &trans    &trans &trans
+                           &trans   &trans   &trans      &trans  &mo UTIL   &trans
+                        >;
+                };
+
+                win_lower_layer {
+// -----------------------------------------------------------------------------------------
+// |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
+// | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
+// | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
+//                    | GUI |     | SPC |   | ENT |     | ALT |
+                        bindings = <
+   &trans  &kp N1  &kp N2  &kp N3   &kp N4   &kp N5      &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &trans
+   &trans  &trans  &trans  &trans   &trans   &trans      &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
+   &trans  &trans  &trans  &trans   &trans   &trans      &trans   &trans   &trans &trans    &trans &trans
+                           &trans   &trans   &trans      &trans  &mo UTIL   &trans
                         >;
                 };
 
@@ -120,7 +135,7 @@
 //                    | GUI |     | SPC |   | ENT |     | ALT |
                         bindings = <
    &trans &trans &trans &trans &trans &trans            &trans &trans &trans &trans &trans &trans  
-   &to MAC &to WIN &trans &trans &trans &trans            &trans &trans &trans &trans &trans &trans  
+   &trans &to MAC &to WIN &trans &trans &trans          &trans &trans &trans &trans &trans &trans  
    &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &trans &kp C_VOL_DN &kp C_MUTE &kp C_VOL_UP &trans &trans 
                         &trans  &trans   &trans      &trans  &trans   &trans
                         >;
