@@ -81,7 +81,7 @@
    &trans &trans &trans &trans &trans &trans            &trans &trans &trans &trans &trans &trans  
    &trans &trans &trans &trans &trans &trans            &trans &trans &trans &trans &trans &trans  
    &trans &trans &trans &trans &trans &trans            &trans &trans &trans &trans &trans &trans  
-              &kp LGUI &lt WIN_LOWER &gqt LCTRL BSPC    &gqt RCTRL SPACE &trans &kp RALT
+              &kp LGUI &lt WIN_LOWER TAB &gqt LCTRL BSPC    &gqt RCTRL SPACE &trans &kp RALT
                         >;
                 };
 
