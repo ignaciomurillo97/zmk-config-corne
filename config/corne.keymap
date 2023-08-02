@@ -8,12 +8,14 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
-#define MAC         0
-#define WIN         1
-#define MAC_LOWER   2
-#define WIN_LOWER   3
-#define RAISE       4
-#define UTIL        5
+#define MAC           0
+#define WIN           1
+#define MAC_LOWER     2
+#define WIN_LOWER     3
+#define RAISE         4
+#define UTIL          5
+#define GAMING        6
+#define GAMING_LOWER  7
 
 / {
         behaviors {
@@ -135,9 +137,39 @@
 //                    | GUI |     | SPC |   | ENT |     | ALT |
                         bindings = <
    &trans &trans &trans &trans &trans &trans            &trans &trans &trans &trans &trans &trans  
-   &trans &to MAC &to WIN &trans &trans &trans          &trans &trans &trans &trans &trans &trans  
+   &trans &to MAC &to WIN &to GAMING_LOWER &trans &trans          &trans &trans &trans &trans &trans &trans  
    &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &trans &kp C_VOL_DN &kp C_MUTE &kp C_VOL_UP &trans &trans 
                         &trans  &trans   &trans      &trans  &trans   &trans
+                        >;
+                };
+
+                gaming {
+// -----------------------------------------------------------------------------------------
+// TODO fix
+// |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BSLH |
+// | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
+// | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | SHFT |
+//                    | GUI | LWR | BSP |   | SPC | RSE  | ALT |
+                        bindings = <
+   &kp T &kp M     &kp Q &kp W &kp E &kp R               &kp Y &kp U  &kp I      &kp O   &kp P    &kp BSLH
+   &kp G &kp LCTRL &kp A &kp S &kp D &kp F               &kp H &kp J  &kp K      &kp L   &kp SEMI &kp SQT
+   &kp B &kp LSHFT &kp Z &kp X &kp C &kp V               &kp N &kp M  &kp COMMA  &kp DOT &kp FSLH &kp RSHIFT
+                 &kp LALT &mo GAMING_LOWER &kp SPACE        &gqt LCMD BSPC &lt RAISE RET &kp RALT
+                        >;
+                };
+
+                gaming_lower {
+// -----------------------------------------------------------------------------------------
+// TODO fix
+// |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BSLH |
+// | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
+// | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | SHFT |
+//                    | GUI | LWR | BSP |   | SPC | RSE  | ALT |
+                        bindings = <
+   &trans &trans &kp N1 &kp N2 &kp N3 &kp N4              &kp Y &kp U  &kp I      &kp O   &kp P    &kp BSLH
+   &trans &trans &kp F1 &kp F2 &kp F3 &kp G               &kp H &kp J  &kp K      &kp L   &kp SEMI &kp SQT
+   &trans &trans &kp F4 &kp F5 &kp F6 &kp P               &kp N &kp M  &kp COMMA  &kp DOT &kp FSLH &kp RSHIFT
+             &kp LALT &trans &gqt LCMD BSPC               &gqt LCMD SPACE &mo UTIL &kp RALT
                         >;
                 };
         };
